@@ -1,0 +1,101 @@
+/* line 1, ../sass/app.scss */
+#center-content {
+  background-color: #408080;
+  padding: 0 2.7% 2.7% 2.7%;
+  -webkit-box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.5); }
+
+/* line 8, ../sass/app.scss */
+#left-drawer {
+  background-color: #666699;
+  padding: 0 2.7% 2.7% 2.7%; }
+
+/* line 12, ../sass/app.scss */
+#right-drawer {
+  background-color: #666699; }
+  /* line 16, ../sass/app.scss */
+  #right-drawer .wolf-list {
+    margin: 2.7% 10%; }
+    /* line 18, ../sass/app.scss */
+    #right-drawer .wolf-list .wolf-list-item {
+      display: block;
+      width: 100%; }
+      /* line 21, ../sass/app.scss */
+      #right-drawer .wolf-list .wolf-list-item .wolf-img {
+        float: left; }
+      /* line 24, ../sass/app.scss */
+      #right-drawer .wolf-list .wolf-list-item img {
+        width: 50px;
+        height: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px; }
+      /* line 30, ../sass/app.scss */
+      #right-drawer .wolf-list .wolf-list-item .wolf-name {
+        float: left;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 1.2em;
+        margin: 15px 10px; }
+        /* line 35, ../sass/app.scss */
+        #right-drawer .wolf-list .wolf-list-item .wolf-name:hover {
+          color: white; }
+
+/* line 43, ../sass/app.scss */
+.user-banner {
+  background: rgba(255, 255, 255, 0.25);
+  padding: 2.7%; }
+  /* line 46, ../sass/app.scss */
+  .user-banner .user-img {
+    float: left; }
+    /* line 48, ../sass/app.scss */
+    .user-banner .user-img img {
+      width: 100px;
+      height: 100px;
+      -webkit-border-radius: 50px;
+      border-radius: 50px; }
+  /* line 55, ../sass/app.scss */
+  .user-banner .user-name {
+    float: left;
+    color: #fff;
+    font-size: 1.4em;
+    margin: 35px 10px; }
+
+/* line 65, ../sass/app.scss */
+.wolf-invite {
+  background: rgba(255, 255, 255, 0.25);
+  padding: 2.7%; }
+  /* line 68, ../sass/app.scss */
+  .wolf-invite .invite-img {
+    float: left; }
+    /* line 70, ../sass/app.scss */
+    .wolf-invite .invite-img img {
+      width: 50px;
+      height: 50px;
+      -webkit-border-radius: 50px;
+      border-radius: 50px; }
+  /* line 77, ../sass/app.scss */
+  .wolf-invite .invite-name {
+    float: left;
+    color: #fff;
+    font-size: 1.2em;
+    margin: 15px 10px; }
+
+/** Wolf single view **/
+/* line 91, ../sass/app.scss */
+.wolf-banner {
+  background: rgba(255, 255, 255, 0.25);
+  padding: 2.7%; }
+  /* line 94, ../sass/app.scss */
+  .wolf-banner .wolf-img {
+    float: left; }
+    /* line 96, ../sass/app.scss */
+    .wolf-banner .wolf-img img {
+      width: 100px;
+      height: 100px;
+      -webkit-border-radius: 50px;
+      border-radius: 50px; }
+  /* line 103, ../sass/app.scss */
+  .wolf-banner .wolf-name {
+    float: left;
+    color: #fff;
+    font-size: 1.4em;
+    margin: 35px 10px; }

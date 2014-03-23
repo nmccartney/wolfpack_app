@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <!--<link rel="stylesheet" type="text/css" href="css/index.css" />-->
+    <link href="libs/css/ionic.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+    <link rel="stylesheet" type="text/css" href="css/angular-snap.css" />
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;key=AIzaSyDJkZVkdOZBX47jhaibdSvAtxlQXUgQV_c&amp;sensor=false"></script>
+
+    <title>Wolfpack</title>
+</head>
+<body  ng-controller="AppCtrl">
+
+<snap-drawers>
+    <div snap-drawer id='left-drawer'>
+        <br>
+        <div ui-view='left-sidebar'></div>
+    </div>
+
+    <div snap-drawer="right" id='right-drawer'>
+        <br>
+        <div ui-view='right-sidebar'></div>
+    </div>
+</snap-drawers>
+
+<snap-content id='center-content'>
+    <br>
+    <div ui-view='center-header-nav'></div>
+    <content padding="true">
+        <div ui-view='center-content'></div>
+    </content>
+    <div ui-view='center-footer-nav'></div>
+
+
+</snap-content>
+
+
+<script type="text/javascript" src="phonegap.js"></script>
+<!--<script type="text/javascript" src="js/index.js"></script>-->
+<!-- Libraries-->
+<script src="libs/js/snap.js"></script>
+<script src="libs/js/angular.min.js"></script>
+<script src="libs/js/angular-resource.min.js"></script>
+<script src="libs/js/angular-snap.js"></script>
+<script src="libs/js/angular-google-maps.js"></script>
+<script src="libs/js/angular-ui-router.js"></script>
+<script src="libs/js/angular-local-storage.js"></script>
+<!-- /end of libraries-->
+
+<!--Application js-->
+<script src="js/app.js"></script>
+<script src="js/modules/PackMod.js"></script>
+<script src="js/modules/WolfMod.js"></script>
+<script src="js/resources/UserFac.js"></script>
+<script src="js/resources/PushFac.js"></script>
+<script src="js/resources/WolfFac.js"></script>
+<script src="js/resources/InviteFac.js"></script>
+<script src="js/services/UserService.js"></script>
+<script src="js/services/WolfService.js"></script>
+<script src="js/services/PackService.js"></script>
+<script src="js/directives/WolfDirectives.js"></script>
+<script src="js/controllers/AppCtrl.js"></script>
+<script src="js/controllers/WolfListCtrl.js"></script>
+<script src="js/controllers/WolfDetailCtrl.js"></script>
+<script src="js/controllers/WolfMapCtrl.js"></script>
+<script src="js/controllers/PackListCtrl.js"></script>
+<script src="js/directives/PackDirectives.js"></script>
+<!--/end Application js-->
+
+<script type="text/javascript">
+//    app.initialize();
+</script>
+</body>
+</html>

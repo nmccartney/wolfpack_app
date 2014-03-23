@@ -1,0 +1,109 @@
+#center-content{
+  background-color: #408080 ;
+  padding: 0 2.7% 2.7% 2.7%;
+
+  -webkit-box-shadow: 0 0 50px 0 rgba(0,0,0,.5);
+  box-shadow: 0 0 50px 0 rgba(0,0,0,.5);
+}
+#left-drawer{
+  background-color: #666699 ;
+  padding: 0 2.7% 2.7% 2.7%;
+}
+#right-drawer{
+  background-color: #666699 ;
+//  padding: 0 2.7% 2.7% 2.7%;
+
+  .wolf-list{
+    margin: 2.7% 10%;
+    .wolf-list-item{
+      display: block;
+      width: 100%;
+      .wolf-img{
+        float: left;
+      }
+      img{
+        width: 50px;
+        height: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+      }
+      .wolf-name{
+        float: left;
+        color:rgba(255,255,255,0.75);
+        font-size: 1.2em;
+        margin: 15px 10px;
+        &:hover{
+          color:rgba(255,255,255,1) ;
+        }
+      }
+    }
+  }
+}
+
+.user-banner{
+  background: rgba(255,255,255,0.25);
+  padding:2.7%;
+  .user-img{
+    float: left;
+    img{
+      width: 100px;
+      height: 100px;
+      -webkit-border-radius: 50px;
+      border-radius: 50px;
+    }
+  }
+  .user-name{
+    float: left;
+    color:#fff;
+    font-size: 1.4em;
+    margin: 35px 10px;
+  }
+}
+
+
+
+.wolf-invite{
+  background: rgba(255,255,255,0.25);
+  padding:2.7%;
+  .invite-img{
+    float: left;
+    img{
+      width: 50px;
+      height: 50px;
+      -webkit-border-radius: 50px;
+      border-radius: 50px;
+    }
+  }
+  .invite-name{
+    float: left;
+    color:#fff;
+    font-size: 1.2em;
+    margin: 15px 10px;
+  }
+  .invite-message{
+
+  }
+  .btn{
+
+  }
+}
+/** Wolf single view **/
+.wolf-banner{
+  background: rgba(255,255,255,0.25);
+  padding:2.7%;
+  .wolf-img{
+    float: left;
+    img{
+      width: 100px;
+      height: 100px;
+      -webkit-border-radius: 50px;
+      border-radius: 50px;
+    }
+  }
+  .wolf-name{
+    float: left;
+    color:#fff;
+    font-size: 1.4em;
+    margin: 35px 10px;
+  }
+}
