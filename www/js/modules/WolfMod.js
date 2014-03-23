@@ -30,11 +30,13 @@ angular.module('myApp.wolves',
                     },
                     'center-header-nav':{
                         template:
-                            "<navigation id='header-nav'>"+
-                                "<button snap-toggle>Toggle Left</button>"+
-                                "<button ng-click='goHome()'>Home</button>"+
-                                "<button snap-toggle='right'>Toggle Right</button>"+
-                                "</navigation>"
+                            "<navigation id='header-nav' class='bar bar-header'>"+
+                                "<div class='tabs tabs-icon-only'>"+
+                                    "<a snap-toggle class='tab-item'><i class='icon ion-star'></i></a>" +
+                                    "<a ng-click='goHome()' class='tab-item'><i class='icon ion-home'></i></a>" +
+                                    "<a snap-toggle='right'  class='tab-item'><i class='icon ion-navicon'></i></a>" +
+                                "</div>"+
+                            "</navigation>"
 
                     }
                 }
@@ -44,10 +46,13 @@ angular.module('myApp.wolves',
                 views:{
                     'center-header-nav':{
                         template:
-                            "<navigation id='header-nav'>"+
-                                "<button snap-toggle>Toggle Left packs</button>"+
-                                "<button snap-toggle='right'>Toggle Right packs</button>"+
-                                "</navigation>"
+                            "<navigation id='header-nav' class='bar bar-header'>"+
+                                "<div class='tabs tabs-icon-only'>"+
+                                    "<a snap-toggle class='tab-item'><i class='icon ion-star'></i></a>" +
+                                    "<a ng-click='goHome()' class='tab-item'><i class='icon ion-home'></i></a>" +
+                                    "<a snap-toggle='right'  class='tab-item'><i class='icon ion-navicon'></i></a>" +
+                                "</div>"+
+                            "</navigation>"
 
                     },
                     'center-footer-nav':{

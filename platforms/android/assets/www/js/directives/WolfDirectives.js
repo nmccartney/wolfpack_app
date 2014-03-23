@@ -35,8 +35,11 @@ app_pack.directive('userBanner',['UserService','$state', function( UserService, 
         template:
             "<div class='user-banner'>"+
                 "<div class='user-img'><img src='http://www.wolfpack.io{{user.wolf.thumb}}'/></div>"+
-                "<div class='user-name'>{{user.username}}</div>"+
-//                "<current-gps></current-gps>"+
+                "<div class='banner-content'>"+
+                    "<div class='user-name'>{{user.username}}</div>"+
+                    "<current-gps></current-gps>"+
+                    "<div style='clear:both;'></div>"+
+                "</div>"+
                 "<div style='clear:both;'></div>"+
 //                "<div>{{user}}</div>"+
             "</div>" +
@@ -59,11 +62,15 @@ app_pack.directive('wolfBanner',['WolfService','$state', function( WolfService, 
         template:
             "<div class='wolf-banner'>"+
                 "<div class='wolf-img'><img src='http://www.wolfpack.io{{wolf.thumb}}'/></div>"+
-                "<div class='wolf-name'>{{wolf.username}}</div>"+
+                "<div class='banner-content'>"+
+                    "<div class='wolf-name'>{{wolf.username}}</div>"+
+                    "<wolf-stats></wolf-stats>"+
+                    "<remove-wolf></remove-wolf>"+
+                    "<div style='clear:both;'></div>"+
+                "</div>"+
                 "<div style='clear:both;'></div>"+
-                "<wolf-stats></wolf-stats>"+
-                "<remove-wolf></remove-wolf>"+
             "</div>" +
+            "<wolf-map></wolf-map>"+
             "<wolf-actions></wolf-actions>"
     }
 }]);
@@ -153,14 +160,20 @@ app_pack.directive('currentGps',['$state', function( WolfService, $state){
         link:function(scope,element,attr){
 //            console.log('wolf - ', scope.wolf ) ;
 
-            navigator.geolocation.getCurrentPosition(function(position) {
-                scope.position = position;
+              //TODO USE PHONEGAP GEO FACTORY
+
+            scope.$on('pgGPS.update',function(e,r){
+                scope.coords = r
+                scope.long = Math.round(r.longitude * 100)/100;
+                scope.lati = Math.round(r.latitude * 100)/100;
                 scope.$apply();
-            },function(e) { alert("Error retrieving position " + e.code + " " + e.message) });
+            });
         },
         template:
-            "<div>Current Position"+
-                "{{position.coords.longitude}} / {{position.coords.latitude}}</div>"
+            "<div id='current-gps'>"+
+                "Long:{{long}} / Lat:{{lati}}<br>"+
+                "Accur:{{coords.accuracy}}"  +
+            "</div>"
     }
 }]);
 

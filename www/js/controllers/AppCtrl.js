@@ -1,7 +1,7 @@
 app_pack.controller('AppCtrl',function(
     $scope, $state,
     WolfActions,  UserService, UserActions,
-    WolfService,PackService,
+    WolfService,PackService,pgContacts,
     pgReady, pgPush,
     localStorageService )
 {
@@ -86,10 +86,13 @@ app_pack.controller('AppCtrl',function(
 
     $scope.registerDevice = function(){
         pgReady().then(function () {
+
+            pgContacts.findContacts();
             // Do something with closured onSuccess and onError
 //            alert('angular-device ready!');
             pgPush('850174929671',function(obj,platform){
                 alert('angular push - '+ obj)
+                UserActions.addDevice(obj);
             })
         });
     }

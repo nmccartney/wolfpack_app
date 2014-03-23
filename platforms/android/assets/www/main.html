@@ -4,10 +4,13 @@
     <meta charset="utf-8" />
     <meta name="format-detection" content="telephone=no" />
     <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />-->
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
     <!--<link rel="stylesheet" type="text/css" href="css/index.css" />-->
-    <link rel="stylesheet" type="text/css" href="css/app.css" />
+    <link href="libs/css/ionic.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/angular-snap.css" />
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;key=AIzaSyDJkZVkdOZBX47jhaibdSvAtxlQXUgQV_c&amp;sensor=false"></script>
 
     <title>Wolfpack</title>
@@ -26,12 +29,13 @@
     </div>
 </snap-drawers>
 
-<snap-content id='center-content'>
-    <br>
+<snap-content  >
     <div ui-view='center-header-nav'></div>
-    <div ui-view='center-content'></div>
+    <ion-content padding="true" id='center-wrapper'>
+        <br>
+        <div ui-view='center-content' id="center-content"></div>
+    </ion-content>
     <div ui-view='center-footer-nav'></div>
-
 </snap-content>
 
 

@@ -52,6 +52,7 @@ app_pack.factory('WolfActions',function($http){
         },
         login:function(user){
             console.log(user)
+            if(!user)return;
             return $http.get(url + '/login/attempt_login.json',{
                 params:{
                     username: user.username,
@@ -59,6 +60,18 @@ app_pack.factory('WolfActions',function($http){
                 }
             }).then(function(r){
                 console.log('login : ', r)
+                return r;
+            })
+        },
+        logout:function(user){
+            console.log('logout : ',user)
+            return $http.get(url + '/login/logout.json',{
+                params:{
+                    username: user.username,
+                    password: user.password
+                }
+            }).then(function(r){
+                console.log('logged out : ', r);
                 return r;
             })
         }

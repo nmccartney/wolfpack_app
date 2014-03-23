@@ -43,7 +43,7 @@
  */
 
 angular.module('phonegap', [])
-    .factory('pgReady', function ($rootScope, $q) {
+    .factory('pgReady', function ($rootScope, $q ) {
         var loadingDeferred = $q.defer();
 
         document.addEventListener('deviceready', function () {
@@ -57,6 +57,35 @@ angular.module('phonegap', [])
 //        pgReady().then(function () {
             // Do something with closured onSuccess and onError
 //        });
+    })
+    .factory('pgGPS', function ($rootScope, $timeout, UserActions) {
+        var gps = {
+            allow:false,
+            follow:false,
+            coords:{},
+            getCurrentPosition: function () {
+                //http://classroom.synonym.com/convert-latitude-longtitude-feet-2724.html
+                var options = { enableHighAccuracy: true };
+                navigator.geolocation.getCurrentPosition(function(pos) {
+                    gps.coords = pos.coords;
+                    UserActions.setGps(pos.coords);
+                    $rootScope.$broadcast('pgGPS.update', gps.coords);
+                },function(e){alert(JSON.stringify(e))},options);
+
+                if(gps.allow){
+                    $timeout(function() {
+                        gps.getCurrentPosition();
+                    }, 15000);
+                }
+            } ,
+            turnOn:function(){
+               gps.allow = true;
+            },
+            turnOff:function(){
+                gps.allow = false;
+            }
+        }
+        return gps;
     })
     .factory('pgPush', function ($rootScope, $log) {
 
@@ -163,4 +192,29 @@ angular.module('phonegap', [])
         };
 
         return push;
+    })
+    .factory('pgContacts', function ($rootScope) {
+        var factory = {
+            contacts: [],
+            findContacts: function ( ) {
+                var options = new ContactFindOptions();
+                options.filter="";
+                options.multiple=true;
+                var fields = ["displayName", "name"];
+                navigator.contacts.find(
+                    fields,
+                    factory.success,
+                    factory.error,
+                    options
+                )
+            },
+            success:function(r){
+                console.log("Success" +r.length);
+                alert("Success" + r.length);
+            } ,
+            error:function(e){
+
+            }
+        }
+        return factory;
     });

@@ -1,9 +1,23 @@
-#center-content{
+snap-content{
   background-color: #408080 ;
-  padding: 0 2.7% 2.7% 2.7%;
 
   -webkit-box-shadow: 0 0 50px 0 rgba(0,0,0,.5);
   box-shadow: 0 0 50px 0 rgba(0,0,0,.5);
+}
+#header-nav{
+  padding: 0;
+}
+#center-wrapper{
+
+  padding: 60px 0 0 0;
+  margin: 0 !important;
+  width:100% !important;
+  height:100% !important;
+  overflow: hidden;
+}
+#center-content{
+//  margin: 2.7%;
+  margin: 50px 5px 0 5px;
 }
 #left-drawer{
   background-color: #666699 ;
@@ -40,6 +54,38 @@
   }
 }
 
+/** Wolf single view **/
+.wolf-banner{
+  background: rgba(255,255,255,0.25);
+  padding:2.7%;
+  .wolf-img{
+    float: left;
+    img{
+      width: 100px;
+      height: 100px;
+      -webkit-border-radius: 50px;
+      border-radius: 50px;
+      border:3px solid #FFF;
+    }
+  }
+  .banner-content{
+    float: left;
+    //    width: 80%;
+    .wolf-name{
+      color:#fff;
+      text-transform: uppercase;
+      font-size: 1.6em;
+      margin: 20px 10px 10px;
+    }
+
+    #current-gps{
+      color:#CCC;
+      font-size: 1.1em;
+      margin: 0px 10px;
+    }
+  }
+}
+/** User single view **/
 .user-banner{
   background: rgba(255,255,255,0.25);
   padding:2.7%;
@@ -50,14 +96,26 @@
       height: 100px;
       -webkit-border-radius: 50px;
       border-radius: 50px;
+      border:3px solid #FFF;
     }
   }
-  .user-name{
+  .banner-content{
     float: left;
-    color:#fff;
-    font-size: 1.4em;
-    margin: 35px 10px;
+//    width: 80%;
+    .user-name{
+      color:#fff;
+      text-transform: uppercase;
+      font-size: 1.6em;
+      margin: 20px 10px 10px;
+    }
+
+    #current-gps{
+      color:#CCC;
+      font-size: 1.1em;
+      margin: 0px 10px;
+    }
   }
+
 }
 
 
@@ -72,6 +130,7 @@
       height: 50px;
       -webkit-border-radius: 50px;
       border-radius: 50px;
+      border:3px solid #FFF;
     }
   }
   .invite-name{
@@ -85,25 +144,5 @@
   }
   .btn{
 
-  }
-}
-/** Wolf single view **/
-.wolf-banner{
-  background: rgba(255,255,255,0.25);
-  padding:2.7%;
-  .wolf-img{
-    float: left;
-    img{
-      width: 100px;
-      height: 100px;
-      -webkit-border-radius: 50px;
-      border-radius: 50px;
-    }
-  }
-  .wolf-name{
-    float: left;
-    color:#fff;
-    font-size: 1.4em;
-    margin: 35px 10px;
   }
 }

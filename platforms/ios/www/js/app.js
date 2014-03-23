@@ -11,7 +11,8 @@ var app_pack = angular.module('myApp', [
         "google-maps",
         'snap',
         'ui.router' ,
-        'LocalStorageModule'
+        'LocalStorageModule',
+        'phonegap'
     ])
 //    .config(function ($compileProvider){
 //        $compileProvider.urlSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
@@ -36,6 +37,7 @@ var app_pack = angular.module('myApp', [
                                 "<input ng-model='user.password'></input>"+
                                 "<button ng-click='login()'>login as {{user}}</button>"+
                                 "<div>{{response}}</div>"+
+                                "<button ng-click='logout()'>Not {{user.username}}?</button>"+
                             "</div>",
                         controller: ''
                     }
@@ -56,11 +58,13 @@ var app_pack = angular.module('myApp', [
                     },
                     'center-header-nav':{
                         template:
-                            "<navigation id='header-nav'>"+
-                                "<button snap-toggle>Toggle Left</button>"+
-                                "<button ng-click='goHome()'>Home</button>"+
-                                "<button snap-toggle='right'>Toggle Right</button>"+
-                                "</navigation>"
+                            "<navigation id='header-nav' class='bar bar-header'>"+
+                                "<div class='tabs tabs-icon-only'>"+
+                                    "<a snap-toggle class='tab-item'><i class='icon ion-star'></i></a>" +
+                                    "<a ng-click='goHome()' class='tab-item'><i class='icon ion-home'></i></a>" +
+                                    "<a snap-toggle='right'  class='tab-item'><i class='icon ion-navicon'></i></a>" +
+                                "</div>"+
+                            "</navigation>"
 
                     },
                     'center-footer-nav':{
@@ -78,57 +82,5 @@ var app_pack = angular.module('myApp', [
 
         $urlRouterProvider.otherwise("/");
     })
-    .controller('AppCtrl',function( $scope,$state, WolfActions, UserService,localStorageService ){
-        $scope.user = {};
-        $scope.$on('user.update',function(e){
-            console.log('user updated ', e);
-            $scope.user = UserService.user;
-        })
 
-        var token = localStorageService.get('x-CSRF-token');
-        var user = localStorageService.get('username');
-        var session = localStorageService.get('session_id');
-        var id = localStorageService.get('id');
-
-        if(user&&id) {
-            UserService.user.username = $scope.user.username = user;
-            UserService.user.user_id = $scope.user.id = id;
-        }
-
-        $scope.login = function(){
-            WolfActions.login($scope.user).then(function(r){
-                $scope.response = r.data;
-                // $httpProvider.defaults.headers.comm  on['X-CSRF-Token'] = r.data.session_id
-                console.log(r);
-
-                localStorageService.add('x-CSRF-token',r.data._csrf_token);
-                localStorageService.add('session_id',r.data.session_id);
-                localStorageService.add('username',r.data.username);
-                localStorageService.add('id',r.data.user_id);
-
-
-                if(r.data.user_id){
-                    UserService.updateUser(r.data);
-
-                    $scope.goHome();
-
-                }else{
-                    alert('try again')
-                }
-            });
-        };
-        $scope.goHome = function(){
-            $state.go('user',{userId:UserService.user.user_id});
-        }
-
-
-        if(!session){
-            $state.go('app');
-        } else{
-            UserService.updateUser({user_id:id,username:user});
-            $scope.goHome();
-        }
-
-        console.log('app ready - ' , UserService.user )
-    })
 

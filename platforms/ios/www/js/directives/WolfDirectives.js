@@ -153,10 +153,7 @@ app_pack.directive('currentGps',['$state', function( WolfService, $state){
         link:function(scope,element,attr){
 //            console.log('wolf - ', scope.wolf ) ;
 
-            navigator.geolocation.getCurrentPosition(function(position) {
-                scope.position = position;
-                scope.$apply();
-            },function(e) { alert("Error retrieving position " + e.code + " " + e.message) });
+              //TODO USE PHONEGAP GEO FACTORY
         },
         template:
             "<div>Current Position"+

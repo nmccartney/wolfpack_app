@@ -1,6 +1,6 @@
 var local = "http://127.0.0.1:3000"
 var remote = "http://wolfpack.io"
- var url = remote;
+ var url = local;
 app_pack.factory('Wolves', function($resource){
     return $resource('/wolves/list', {
 //            id: "@id"
@@ -49,31 +49,6 @@ app_pack.factory('WolfActions',function($http){
                 .then(function(r){
                     return r.data
                 })
-        },
-        login:function(user){
-            console.log(user)
-            if(!user)return;
-            return $http.get(url + '/login/attempt_login.json',{
-                params:{
-                    username: user.username,
-                    password: user.password
-                }
-            }).then(function(r){
-                console.log('login : ', r)
-                return r;
-            })
-        },
-        logout:function(user){
-            console.log('logout : ',user)
-            return $http.get(url + '/login/logout.json',{
-                params:{
-                    username: user.username,
-                    password: user.password
-                }
-            }).then(function(r){
-                console.log('logged out : ', r);
-                return r;
-            })
         }
     }
 })
