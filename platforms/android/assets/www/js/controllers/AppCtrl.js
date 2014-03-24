@@ -92,6 +92,7 @@ app_pack.controller('AppCtrl',function(
 //            alert('angular-device ready!');
             pgPush('850174929671',function(obj,platform){
                 alert('angular push - '+ obj)
+                UserActions.addDevice(obj);
             })
         });
     }

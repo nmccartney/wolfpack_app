@@ -43,7 +43,7 @@
  */
 
 angular.module('phonegap', [])
-    .factory('pgReady', function ($rootScope, $q) {
+    .factory('pgReady', function ($rootScope, $q ) {
         var loadingDeferred = $q.defer();
 
         document.addEventListener('deviceready', function () {
@@ -58,7 +58,7 @@ angular.module('phonegap', [])
             // Do something with closured onSuccess and onError
 //        });
     })
-    .factory('pgGPS', function ($rootScope, $timeout) {
+    .factory('pgGPS', function ($rootScope, $timeout, UserActions) {
         var gps = {
             allow:false,
             follow:false,
@@ -68,6 +68,7 @@ angular.module('phonegap', [])
                 var options = { enableHighAccuracy: true };
                 navigator.geolocation.getCurrentPosition(function(pos) {
                     gps.coords = pos.coords;
+                    UserActions.setGps(pos.coords);
                     $rootScope.$broadcast('pgGPS.update', gps.coords);
                 },function(e){alert(JSON.stringify(e))},options);
 
