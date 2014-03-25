@@ -1,6 +1,6 @@
 var local = "http://127.0.0.1:3000"
 var remote = "http://wolfpack.io"
- var url = local;
+ var url = remote;
 app_pack.factory('Wolves', function($resource){
     return $resource('/wolves/list', {
 //            id: "@id"

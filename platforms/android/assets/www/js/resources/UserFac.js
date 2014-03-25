@@ -15,7 +15,7 @@ app_pack.factory('UserActions',function($http){
                 })
         },
         addDevice:function(device){
-            return $http.get(url + '/wolves/add_device',{params:{device:gps}})
+            return $http.get(url + '/wolves/add_device',{params:{device:device}})
                 .then(function(r){
                     console.log('gps saved : ', r)
                     return r.data;
