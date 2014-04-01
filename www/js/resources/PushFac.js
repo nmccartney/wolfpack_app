@@ -158,7 +158,7 @@ angular.module('phonegap', [])
 
             // Android notification received
             window.onNotificationGCM = function (notification) {
-//                alert('notification '+ JSON.stringify(notification));
+                alert('notification '+ JSON.stringify(notification));
                 switch (notification.event) {
                     case 'registered':
                         if (notification.regid.length > 0) {
@@ -171,7 +171,7 @@ angular.module('phonegap', [])
                         break;
 
                     case 'message':
-                        $log.info('GCM push notification received (only payload forwarded):', notification);
+                        alert('GCM push notification received (only payload forwarded):', notification);
                         $rootScope.$broadcast('phonegapPush.notification', {
                             data: notification.payload,
                             provider: 'GCM'
