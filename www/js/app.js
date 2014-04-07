@@ -12,7 +12,8 @@ var app_pack = angular.module('myApp', [
         'snap',
         'ui.router' ,
         'LocalStorageModule',
-        'phonegap'
+        'phonegap',
+        'btford.socket-io'
     ])
 //    .config(function ($compileProvider){
 //        $compileProvider.urlSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
