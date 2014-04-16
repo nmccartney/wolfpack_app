@@ -2,7 +2,7 @@ app_pack.controller('AppCtrl',function(
     $scope, $state,
     WolfActions,  UserService, UserActions,
     WolfService,PackService,pgContacts,
-    pgReady, pgPush, SocketServer,
+    pgReady, pgPush, SocketServer,ChatService,
     localStorageService )
 {
   $scope.user = {};
@@ -116,6 +116,21 @@ app_pack.controller('AppCtrl',function(
 
   SocketServer.on('presence',function(r){
     console.log('socket-presence: ', r);
+    ChatService.presence(r)
+  });
+
+  SocketServer.on('roomclients', function(r){
+    console.log('room clients: ', r);
+    ChatService.currRoom = r.room;
+  });
+
+  SocketServer.on('chatmessage', function(data){
+    var nickname = data.client.nickname;
+    var message = data.message;
+    ChatService.gotMessage(data);
+    console.log(data)
+    //display the message in the chat window
+    // insertMessage(nickname, message, true, false, false);
   });
 
   /**

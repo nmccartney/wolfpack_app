@@ -62,6 +62,7 @@ angular.module('myApp.packs',
                         template:
                             "<div>"+
                                 "<pack-banner></pack-banner>"+
+                                "<pack-chat></pack-chat>"+
                             "</div>",
                         controller: ''
                     }

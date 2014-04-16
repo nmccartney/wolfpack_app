@@ -80,3 +80,44 @@ app_pack.directive('removeWolfFromPack',['WolfService','PackService',function( W
                 "</span>"
     }
 }]);
+app_pack.directive('packChat',['ChatService','$state', function( ChatService, $state){
+    return {
+        restrict: "AE" ,
+        link:function(scope,element,attr){
+//            console.log('wolf - ', scope.wolf ) ;
+
+            scope.messages = [];
+
+            ChatService.unsubscribe()
+            ChatService.subscribe(scope.pack.name);
+
+            scope.$on('presence.update',function(e,r){
+                console.log('got pres - ' , r);
+                scope.messages.push(r);
+            });
+
+            scope.$on('message.update',function(e,r){
+                console.log('got pres - ' , r);
+                scope.messages.push(r);
+            });
+
+            // Messages.getMessages(scope.pack.id,'Pack').then(function(r){
+            //     scope.messages = r
+            //     console.log('logging - ' , r)
+            //     return r.data
+            // });
+
+            // console.log('logging ' , $scope.messages)
+
+            // scope.createMessage = function(){
+            //     Messages.sendMessage(scope.user.id,scope.pack.id,'Pack',scope.newMessage.message)
+            //         .then(function(r){
+            //             scope.messages = r
+            //             console.log('getting new messages - ', r)
+            //             scope.newMessage.message = ""
+            //         })
+            // }
+        },
+        templateUrl:"js/views/ChatDirView.html"
+    }
+}]);
