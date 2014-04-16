@@ -119,6 +119,11 @@ app_pack.controller('AppCtrl',function(
     ChatService.presence(r)
   });
 
+  SocketServer.on('location',function(r){
+    console.log('socket-location: ', r);
+    ChatService.gotGps(r)
+  });
+
   SocketServer.on('roomclients', function(r){
     console.log('room clients: ', r);
     ChatService.currRoom = r.room;

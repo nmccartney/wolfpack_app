@@ -80,7 +80,7 @@ app_pack.directive('removeWolfFromPack',['WolfService','PackService',function( W
                 "</span>"
     }
 }]);
-app_pack.directive('packChat',['ChatService','$state', function( ChatService, $state){
+app_pack.directive('packChat',['ChatService','Messages', function( ChatService, Messages){
     return {
         restrict: "AE" ,
         link:function(scope,element,attr){
@@ -93,7 +93,9 @@ app_pack.directive('packChat',['ChatService','$state', function( ChatService, $s
 
             scope.$on('presence.update',function(e,r){
                 console.log('got pres - ' , r);
-                scope.messages.push(r);
+              var mess = r;
+              mess['message'] = "is now " + r.state;
+              scope.messages.push(mess);
             });
 
             scope.$on('message.update',function(e,r){
@@ -101,22 +103,22 @@ app_pack.directive('packChat',['ChatService','$state', function( ChatService, $s
                 scope.messages.push(r);
             });
 
-            // Messages.getMessages(scope.pack.id,'Pack').then(function(r){
-            //     scope.messages = r
-            //     console.log('logging - ' , r)
-            //     return r.data
-            // });
+            Messages.getMessages(scope.pack.id,'Pack').then(function(r){
+                 scope.messages = r
+                 console.log('logging - ' , r)
+                 return r.data
+            });
 
-            // console.log('logging ' , $scope.messages)
+            scope.createMessage = function(){
+                 Messages.sendMessage(scope.user.id,scope.pack.id,'Pack',scope.newMessage)
+                     .then(function(r){
+//                         scope.messages = r
+                       scope.messages.push({message:scope.newMessage,client:{username:scope.user.username}});
+                       ChatService.sendMessage({message: scope.newMessage, room: scope.pack.name});
 
-            // scope.createMessage = function(){
-            //     Messages.sendMessage(scope.user.id,scope.pack.id,'Pack',scope.newMessage.message)
-            //         .then(function(r){
-            //             scope.messages = r
-            //             console.log('getting new messages - ', r)
-            //             scope.newMessage.message = ""
-            //         })
-            // }
+                       scope.newMessage = ""
+                     })
+            }
         },
         templateUrl:"js/views/ChatDirView.html"
     }

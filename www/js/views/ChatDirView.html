@@ -1,21 +1,21 @@
 <div id="pack-chat">
-	<h1>{{pack.name}} YAY</h1>
+	<h1>{{pack.name}} {{user.id}} YAY</h1>
 	<div class="list">
 
 		<div class="list">
 
 		    <a ng-repeat="message in messages track by $index" class="item item-avatar" href="#">
 		      <img src="http://placekitten.com/80/80">
-		      <h2>{{message.client.nickname}}</h2>
+		      <h2>{{message.client.username}}{{message.wolf}}</h2>
 		      <p>{{message.message}}</p>
 		    </a>
 
-		</div>	
+		</div>
 	  	<div class="item item-input-inset">
 			<label class="item-input-wrapper">
-			  <input ng-model="new_message" type="text" placeholder="Type here...">
+			  <input ng-model="newMessage" type="text" placeholder="Type here...">
 			</label>
-			<button ng-click="createMeassage()" class="button button-small">
+			<button ng-click="createMessage()" id="btn-chat-send" class="button button-small">
 			  Send
 			</button>
 		</div>

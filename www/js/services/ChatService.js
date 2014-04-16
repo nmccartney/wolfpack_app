@@ -9,7 +9,7 @@ app_pack.service('ChatService',[ 'SocketServer', '$rootScope', function(SocketSe
 
     },
     sendGps:function(){
-      SocketServer.emit('updateGps', { user_id:1, nickname: 'testing' ,gps:{long:'70',lati:'80'}});
+      SocketServer.emit('updateGps', { user_id:1, username: 'testing' ,gps:{long:'70',lati:'80'}});
     },
     gotGps:function(){
       $rootScope.$broadcast( 'gps.update' );
@@ -24,7 +24,7 @@ app_pack.service('ChatService',[ 'SocketServer', '$rootScope', function(SocketSe
       $rootScope.$broadcast( 'message.update',data );
     },
     sendMessage:function(data){
-
+      SocketServer.emit('chatmessage', { message: data.message, room: data.room });
     },
     presence:function(data){
       $rootScope.$broadcast( 'presence.update' ,data);
